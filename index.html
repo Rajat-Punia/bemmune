@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bemmune — Vaccine design for immune-evasive pathogens</title>
+  <meta name="description" content="Bemmune is building a virtual immune system to design vaccines against immune-evasive pathogens, starting with hepatitis C." />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Bemmune" />
+  <meta property="og:description" content="A virtual immune system for vaccine design against immune-evasive pathogens." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bemmune.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0f1c;
+      --bg-soft: #111a2e;
+      --accent: #38bdf8;
+      --accent-2: #22d3ee;
+      --text: #e8eef7;
+      --muted: #9aa7bd;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(1200px 800px at 70% -10%, #16233f 0%, var(--bg) 55%) no-repeat, var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      flex: 1;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: auto;
+    }
+
+    .logo {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      font-weight: 700; color: #04121f; font-size: 18px;
+    }
+
+    .brand { font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+
+    main { margin: 64px 0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--accent-2);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 6px 12px; border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(34, 211, 238, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+    }
+
+    h1 {
+      font-size: clamp(30px, 6vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    h1 .grad {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lede { font-size: 18px; color: var(--muted); max-width: 600px; margin-bottom: 18px; }
+    .lede strong { color: var(--text); font-weight: 600; }
+
+    .blurb { font-size: 16px; color: var(--muted); max-width: 600px; }
+
+    .cta { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      padding: 12px 22px; border-radius: 10px;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #04121f; }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-ghost { color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { background: var(--bg-soft); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">B</div>
+      <div class="brand">Bemmune</div>
+    </header>
+
+    <main>
+      <span class="badge"><span class="dot"></span> Coming soon</span>
+
+      <h1>Designing vaccines against <span class="grad">immune-evasive pathogens</span>.</h1>
+
+      <p class="lede"><strong>Vaccine development for immune-evasive pathogens is too slow.</strong></p>
+
+      <p class="blurb">
+        We are building a virtual immune system — a computational platform to design and
+        prioritize vaccine strategies before committing to costly experiments. Our first
+        focus is a broadly protective vaccine against hepatitis C.
+      </p>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:rjtpunia@gmail.com">Get in touch</a>
+      </div>
+    </main>
+
+    <footer>
+      <span>&copy; 2026 Bemmune</span>
+      <span><a href="mailto:rjtpunia@gmail.com">rjtpunia@gmail.com</a></span>
+    </footer>
+  </div>
+</body>
+</html>
