@@ -150,19 +150,26 @@
     }
     h1 .accent { color: var(--cyan); }
 
+    .sub { font-size: 14px; color: var(--muted); margin-top: 2px; }
+    .sub b { color: var(--text); }
+
     /* terminal block */
     .term {
-      width: min(560px, 92vw);
+      width: min(640px, 92vw);
       text-align: left;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 14px 16px;
-      margin-top: 16px;
-      font-size: 13px;
-      line-height: 1.8;
+      margin-top: 18px;
+      font-size: 12.5px;
+      line-height: 1.7;
       backdrop-filter: blur(6px);
     }
+    .term .out { opacity: 0; transition: opacity .4s ease; margin-top: 2px; }
+    .term .out.hdr { margin-top: 6px; color: var(--muted); }
+    .term .out.spacer { line-height: 0.6; }
+    .term .out b { color: var(--cyan); font-weight: 700; }
     .term .bar { display: flex; gap: 6px; margin-bottom: 10px; }
     .term .bar i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; opacity: 0.8; }
     .term .bar .r { background: #ff5f56; } .term .bar .y { background: #ffbd2e; } .term .bar .g { background: #27c93f; }
@@ -214,48 +221,49 @@
 
     <main>
       <div id="viewer"><div class="viewer-loading">[ rendering nanoparticle... ]</div></div>
-      <div class="viewer-cap"><span class="c">//</span> mosaic mi3 nanoparticle &nbsp;·&nbsp; HCV E1E2 &nbsp;·&nbsp; 4 strains &nbsp;·&nbsp; 60 subunits</div>
+      <div class="viewer-cap"><span class="c">//</span> HCV E1E2 immunogen &nbsp;·&nbsp; mi3 nanoparticle</div>
 
-      <div class="legend" aria-hidden="true">
-        <span><i class="sw" style="background:var(--s1)"></i>strain 1</span>
-        <span><i class="sw" style="background:var(--s2)"></i>strain 2</span>
-        <span><i class="sw" style="background:var(--s3)"></i>strain 3</span>
-        <span><i class="sw" style="background:var(--s4)"></i>strain 4</span>
-        <span><i class="sw" style="background:#33415a"></i>mi3 scaffold</span>
-      </div>
-
-      <span class="badge" style="margin-top:24px"><span class="dot"></span> coming soon</span>
-      <h1>Vaccine development for immune-evasive pathogens is <span class="accent">too slow</span>.</h1>
+      <span class="badge" style="margin-top:22px"><span class="dot"></span> coming soon</span>
+      <h1>Vaccine development for <span class="accent">immune-evasive pathogens</span>.</h1>
+      <div class="sub">first target: <b>hepatitis C</b></div>
 
       <div class="term">
         <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i></div>
         <div class="line"><span class="prompt">bemmune@vis</span>:<span class="arrow">~</span>$ <span id="typed"></span><span class="blink">▮</span></div>
-        <div class="line dim" id="out1" style="opacity:0"><span class="arrow">&gt;</span> building a <b style="color:var(--text)">virtual immune system</b> to design and rank vaccine strategies in silico</div>
-        <div class="line dim" id="out2" style="opacity:0"><span class="arrow">&gt;</span> first target: <b style="color:var(--text)">hepatitis C</b> — broadly protective, mosaic-displayed immunogens</div>
-        <div class="line dim" id="out3" style="opacity:0"><span class="arrow">&gt;</span> status: <span style="color:var(--green)">coming soon</span></div>
+
+        <div class="out dim hdr"><span class="arrow">#</span> the problem</div>
+        <div class="out"><span class="arrow">&gt;</span> immune-evasive pathogens mutate constantly — antibodies raised against one variant miss the next</div>
+        <div class="out"><span class="arrow">&gt;</span> but their conserved, vulnerable sites don't change — <b>broadly neutralizing antibodies (bNAbs)</b> that target them can recognize many variants at once</div>
+        <div class="out"><span class="arrow">&gt;</span> in principle, bNAbs are the solution</div>
+        <div class="out"><span class="arrow">&gt;</span> the challenge: these sites are subdominant — bNAbs are rare, and the right immunogens, in what order and dose, are unknown</div>
+
+        <div class="out spacer">&nbsp;</div>
+        <div class="out dim hdr"><span class="arrow">#</span> what we're building</div>
+        <div class="out"><span class="arrow">&gt;</span> a <b>virtual immune system (VIS)</b> to design and screen vaccination strategies in silico</div>
+        <div class="out"><span class="arrow">&gt;</span> ranking which strategies are most likely to elicit the target bNAbs</div>
+        <div class="out"><span class="arrow">&gt;</span> first indication: <b>hepatitis C</b></div>
+        <div class="out"><span class="arrow">&gt;</span> status: <span style="color:var(--green)">stay tuned</span></div>
       </div>
 
-      <div class="cta"><a href="mailto:rjtpunia@gmail.com">get in touch →</a></div>
+      <div class="cta"><a href="mailto:rjtpunia@cornell.edu">get in touch →</a></div>
     </main>
   </div>
 
   <footer>
     <span>© 2026 bemmune</span>
-    <span><a href="mailto:rjtpunia@gmail.com">rjtpunia@gmail.com</a></span>
+    <span><a href="mailto:rjtpunia@cornell.edu">rjtpunia@cornell.edu</a></span>
   </footer>
 
   <script>
     // ---- typing effect ----
     (function () {
-      const cmd = "vis --init --target=HCV";
+      const cmd = "vis --brief";
       const el = document.getElementById('typed');
+      const lines = document.querySelectorAll('.term .out');
       let i = 0;
       function step() {
-        if (i <= cmd.length) { el.textContent = cmd.slice(0, i); i++; setTimeout(step, 55); }
-        else {
-          ['out1','out2','out3'].forEach((id, k) =>
-            setTimeout(() => { document.getElementById(id).style.transition = 'opacity .4s'; document.getElementById(id).style.opacity = 1; }, 250 + k * 450));
-        }
+        if (i <= cmd.length) { el.textContent = cmd.slice(0, i); i++; setTimeout(step, 60); }
+        else { lines.forEach((ln, k) => setTimeout(() => { ln.style.opacity = 1; }, 200 + k * 260)); }
       }
       step();
     })();
