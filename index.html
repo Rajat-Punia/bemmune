@@ -297,7 +297,7 @@
             viewer.setViewStyle({ style: 'outline', color: 'black', width: 0.13 });
             const ld = el.querySelector('.viewer-loading'); if (ld) ld.remove();
             viewer.zoomTo();
-            viewer.zoom(1.05);
+            viewer.zoom(0.78); // zoom out so the full nanoparticle fits with margin
             viewer.spin('y', 0.6);
             viewer.render();
           })
