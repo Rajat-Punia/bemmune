@@ -214,16 +214,21 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="logo">B</div>
+      <div class="logo" aria-label="bemmune logo">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+          <line x1="7" y1="2.5" x2="7" y2="21.5" />
+          <circle cx="13" cy="15" r="5.6" />
+          <circle cx="7" cy="3.2" r="1.9" fill="currentColor" stroke="none" />
+        </svg>
+      </div>
       <div class="brand"><b>bemmune</b></div>
       <div class="header-tag">~/ immune-evasive pathogens</div>
     </header>
 
     <main>
-      <div id="viewer"><div class="viewer-loading">[ rendering nanoparticle... ]</div></div>
-      <div class="viewer-cap"><span class="c">//</span> HCV E1E2 immunogen &nbsp;·&nbsp; mi3 nanoparticle</div>
+      <div id="viewer"><div class="viewer-loading">[ initializing... ]</div></div>
 
-      <span class="badge" style="margin-top:22px"><span class="dot"></span> coming soon</span>
+      <span class="badge" style="margin-top:14px"><span class="dot"></span> coming soon</span>
       <h1>Vaccine development for <span class="accent">immune-evasive pathogens</span>.</h1>
       <div class="sub">first target: <b>hepatitis C</b></div>
 
@@ -277,22 +282,22 @@
           .then(r => r.text())
           .then(data => {
             viewer.addModel(data, 'pdb');
-            const R = 5.0;
+            const R = 8.0; // large radius -> spheres merge into a smooth blob
             const colors = {
-              A: '#22d3ee', B: '#22d3ee',   // strain 1
-              C: '#e879f9', D: '#e879f9',   // strain 2
-              E: '#a3e635', F: '#a3e635',   // strain 3
-              G: '#fb923c', H: '#fb923c',   // strain 4
-              M: '#243049',                 // mi3 core
-              S: '#33415a'                  // SpyCatcher
+              A: '#a5f3fc', B: '#22d3ee',   // strain 1 : E1 (light) / E2
+              C: '#f5d0fe', D: '#e879f9',   // strain 2
+              E: '#d9f99d', F: '#a3e635',   // strain 3
+              G: '#fed7aa', H: '#fb923c',   // strain 4
+              M: '#222d44',                 // mi3 core
+              S: '#2c3a55'                  // SpyCatcher
             };
             Object.keys(colors).forEach(ch =>
               viewer.setStyle({ chain: ch }, { sphere: { color: colors[ch], radius: R } }));
-            // cel-shaded cartoon outline
-            viewer.setViewStyle({ style: 'outline', color: 'black', width: 0.09 });
+            // cel-shaded cartoon boundary outline
+            viewer.setViewStyle({ style: 'outline', color: 'black', width: 0.13 });
             const ld = el.querySelector('.viewer-loading'); if (ld) ld.remove();
             viewer.zoomTo();
-            viewer.zoom(1.15);
+            viewer.zoom(1.05);
             viewer.spin('y', 0.6);
             viewer.render();
           })
